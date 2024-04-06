@@ -112,10 +112,8 @@ Hooks.once('init', () => {
 	
 },
 
-	
-libWrapper.register('trailblazer', 'pf1.documents.actor.ActorPF.prototype._updateSpellBook', function (_updateSpellBook) {
-  console.log('_updateSpellBook was overridden');
-  _updateSpellBook(bookId, rollData, cache) {
+function updateSpellBook(bookId, roolData, cache) {
+	_updateSpellBook(bookId, rollData, cache) {
     const actorData = this.system;
     const book = actorData.attributes.spells.spellbooks[bookId];
     if (!book) {
@@ -300,7 +298,7 @@ libWrapper.register('trailblazer', 'pf1.documents.actor.ActorPF.prototype._updat
 
     if (useAuto) {
       let casterType = book.casterType;
-      if (!casterType) {
+      if (!casterType || pf1.config.casterProgression.castsPerDay[mode.raw] === undefined) {
         book.casterType = casterType = "high";
       }
       if (mode.isPrestige && casterType !== "low") {
@@ -527,6 +525,38 @@ libWrapper.register('trailblazer', 'pf1.documents.actor.ActorPF.prototype._updat
 
     // Set spellbook ranges
     book.range = new SpellRanges(book.cl.total);
-	}
-  return;
-},
+  }
+
+  /**
+   * Collect some basic spellbook info so it doesn't need to be gathered again for each spellbook.
+   *
+   * @internal
+   * @returns {object} Spellbook cache
+   */
+  _generateSpellbookCache() {
+    const bookKeys = Object.keys(this.system.attributes.spells.spellbooks);
+
+    const allSpells = this.itemTypes.spell;
+
+    const cache = {
+      spells: allSpells,
+      books: {},
+    };
+
+    // Prepare spellbooks
+    bookKeys.forEach((bookKey) => {
+      cache.books[bookKey] ??= new Spellbook(bookKey, this);
+    });
+
+    // Spread out spells to books
+    allSpells.forEach((spell) => {
+      const bookKey = spell.system.spellbook;
+      if (!bookKeys.includes(bookKey)) return console.error("Spell has invalid book", spell);
+      cache.books[bookKey].addSpell(spell);
+    });
+
+    return cache;
+  }
+},	
+	
+libWrapper.register('trailblazer', 'pf1.documents.actor.ActorPF.prototype._updateSpellBook', updateSpellBook, libWrapper.OVERRIDE);
