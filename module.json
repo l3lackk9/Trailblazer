@@ -19,6 +19,9 @@
             "path": "en.json"
         }
     ],
+    "scripts": [
+        "scripts/config.js"
+    ],
     "relationships": {
         "systems": [
             {
