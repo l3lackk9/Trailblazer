@@ -1,5 +1,4 @@
 function updateSpellBook(bookId, roolData, cache) {
-	_updateSpellBook(bookId, rollData, cache) {
 	    const actorData = this.system;
 	    const book = actorData.attributes.spells.spellbooks[bookId];
 	    if (!book) {
@@ -411,39 +410,7 @@ function updateSpellBook(bookId, roolData, cache) {
 	
 	    // Set spellbook ranges
 	    book.range = new SpellRanges(book.cl.total);
-	  }
-	
-	  /**
-	   * Collect some basic spellbook info so it doesn't need to be gathered again for each spellbook.
-	   *
-	   * @internal
-	   * @returns {object} Spellbook cache
-	   */
-	  _generateSpellbookCache() {
-	    const bookKeys = Object.keys(this.system.attributes.spells.spellbooks);
-	
-	    const allSpells = this.itemTypes.spell;
-	
-	    const cache = {
-	      spells: allSpells,
-	      books: {},
-	    };
-	
-	    // Prepare spellbooks
-	    bookKeys.forEach((bookKey) => {
-	      cache.books[bookKey] ??= new Spellbook(bookKey, this);
-	    });
-	
-	    // Spread out spells to books
-	    allSpells.forEach((spell) => {
-	      const bookKey = spell.system.spellbook;
-	      if (!bookKeys.includes(bookKey)) return console.error("Spell has invalid book", spell);
-	      cache.books[bookKey].addSpell(spell);
-	    });
-	
-	    return cache;
-	  }
-	},
+	  },
 
 Hooks.once('init', () => {
 	pf1.config.casterProgression.castsperDay.spontaneous.low = [
