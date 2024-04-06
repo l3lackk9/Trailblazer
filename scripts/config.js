@@ -434,6 +434,7 @@ Hooks.once('init', () => {
 		[Number.POSITIVE_INFINITY, 5, 4, 3, 3],
 		[Number.POSITIVE_INFINITY, 5, 4, 4, 3],
 		[Number.POSITIVE_INFINITY, 5, 5, 4, 4],
+		console.log("Spontaneous Low Initiated!")
 	];
 	pf1.config.casterProgression.castsperDay.hybrid.low = [
 		[Number.POSITIVE_INFINITY],
@@ -456,6 +457,7 @@ Hooks.once('init', () => {
 		[Number.POSITIVE_INFINITY, 4, 3, 2, 2],
 		[Number.POSITIVE_INFINITY, 4, 3, 3, 2],
 		[Number.POSITIVE_INFINITY, 4, 4, 3, 3],
+		console.log("Hybrid Low Initiated!")
 	];
 	pf1.config.casterProgression.castsperDay.hybrid.med = [
 		[Number.POSITIVE_INFINITY, 1],
@@ -478,6 +480,7 @@ Hooks.once('init', () => {
 		[Number.POSITIVE_INFINITY, 4, 4, 4, 4, 3, 3],
 		[Number.POSITIVE_INFINITY, 4, 4, 4, 4, 4, 3],
 		[Number.POSITIVE_INFINITY, 4, 4, 4, 4, 4, 4],
+		console.log("Hybrid med Initiated!")
 	];
 	pf1.config.casterProgression.spellsPreparedPerDay.hybrid.low = [
 		[null],
@@ -500,6 +503,7 @@ Hooks.once('init', () => {
 		[null, 6, 6, 6, 5],
 		[null, 6, 6, 6, 5],
 		[null, 6, 6, 6, 5],
+		console.log("Hybrid low prep Initiated!")
 	];
 	pf1.config.casterProgression.spellsPreparedPerDay.hybrid.med = [
 		[4, 2],
@@ -522,6 +526,7 @@ Hooks.once('init', () => {
 		[6, 6, 6, 6, 5, 4, 4],
 		[6, 6, 6, 6, 5, 5, 4],
 		[6, 6, 6, 6, 6, 5, 5],
+		console.log("Hybrid med prep Initiated!")
 	];
 	libWrapper.register('trailblazer', 'pf1.documents.actor.ActorPF.prototype._updateSpellBook', updateSpellBook, libWrapper.OVERRIDE);
 }
