@@ -412,7 +412,7 @@ function updateSpellBook(bookId, roolData, cache) {
 	    book.range = new SpellRanges(book.cl.total);
 	  },
 
-Hooks.once('init', () => {
+Hooks.on('init', () => {
 	pf1.config.casterProgression.castsperDay.spontaneous.low = [
 		[Number.POSITIVE_INFINITY],
 		[Number.POSITIVE_INFINITY],
