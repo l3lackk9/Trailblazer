@@ -4,29 +4,30 @@
     "description": "A simple mod to implement houserules for the trailblazer mod.",
     "version": "5.0.4",
     "compatibility": {
-        "minimum": "11",
-        "verified": "11"
+      "minimum": "11",
+      "verified": "11"
     },
     "authors": [
-        {
-            "name": "Blackk9"
-        }
+      {
+        "name": "Blackk9"
+      }
     ],
     "languages": [
-        {
-            "lang": "en",
-            "name": "English",
-            "path": "en.json"
-        }
+      {
+        "lang": "en",
+        "name": "English",
+        "path": "en.json"
+      }
     ],
-    "scripts": [
-        "scripts/config.js"
+    "esmodules": [
+      "scripts/config.mjs"
     ],
     "relationships": {
-        "systems": [
-            {
-                "id": "pf1"
-            }
-        ]
+      "systems": [
+        {
+          "id": "pf1"
+        }
+      ]
     }
-}
+  }
+  
