@@ -2,7 +2,7 @@
     "id": "trailblazer",
     "title": "Trailblazer",
     "description": "A simple mod to implement houserules for the trailblazer mod.",
-    "version": "5.0.5",
+    "version": "0.0.6",
     "compatibility": {
       "minimum": "11",
       "verified": "11"
