@@ -3,7 +3,7 @@ import {
     SpellbookSlots,
     SpellbookMode,
     setSourceInfoByName,
-} from 'scripts/pf1-utils.mjs';
+} from './pf1-utils.mjs';
 
 function updateSpellBook(bookId, rollData, cache) {
     const actorData = this.system;
