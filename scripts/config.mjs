@@ -403,7 +403,7 @@ function updateSpellBook(bookId, rollData, cache) {
 }
 
 Hooks.once('init', () => {
-    console.log("Caster config code is underway!")
+    console.log("Caster config code is underway!");
     pf1.config.casterProgression.castsPerDay.spontaneous.low = [
         [Number.POSITIVE_INFINITY],
         [Number.POSITIVE_INFINITY],
